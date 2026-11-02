@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Creator OS — AI Content Factory</title>
+<style>
+:root{--bg:#090d16;--panel:#111827;--panel2:#151f30;--line:#263247;--text:#eef3fb;--muted:#93a2b8;--blue:#6ea8ff;--cyan:#63e0d1;--purple:#a78bfa;--good:#54d6a0;--warn:#f5bd62}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(900px 500px at 80% -10%,#17294a 0%,transparent 60%),var(--bg);color:var(--text);font:14px/1.5 Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif}
+button,input,select,textarea{font:inherit}button{cursor:pointer}.app{display:grid;grid-template-columns:250px 1fr;min-height:100vh}.sidebar{border-right:1px solid var(--line);background:#0c1220;padding:22px 15px;display:flex;flex-direction:column;gap:24px}.brand{display:flex;align-items:center;gap:11px;padding:3px 8px}.logo{width:36px;height:36px;border-radius:12px;background:linear-gradient(135deg,#68a5ff,#8c72e9);display:grid;place-items:center;font-weight:900;color:#07101e;box-shadow:0 8px 25px #527ee544}.brand strong{font-size:16px;letter-spacing:.3px}.brand small{display:block;color:var(--muted);font-size:11px}.navlabel{color:#66758c;font-size:10px;font-weight:800;letter-spacing:1.4px;padding:0 10px;margin-bottom:7px}.nav{display:grid;gap:5px}.nav button{border:0;background:transparent;color:#aebbd0;text-align:left;padding:11px 12px;border-radius:10px;display:flex;gap:11px;align-items:center}.nav button:hover,.nav button.active{background:#1b2940;color:white}.nav button.active{box-shadow:inset 3px 0 var(--blue)}.ico{width:20px;text-align:center;font-size:16px}.sidebottom{margin-top:auto;border:1px solid var(--line);border-radius:13px;padding:13px;background:#111a2a}.sidebottom small{color:var(--muted)}.main{min-width:0;padding:27px clamp(18px,4vw,48px) 50px;max-width:1500px;width:100%;margin:auto}.top{display:flex;justify-content:space-between;align-items:center;gap:15px;margin-bottom:28px}.crumb{color:var(--muted);font-size:12px}.topright{display:flex;gap:9px;align-items:center}.pill{border:1px solid var(--line);background:#111a2a;color:#bdc9da;border-radius:30px;padding:7px 11px;font-size:11px}.avatar{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#79c6ed,#9677ef);display:grid;place-items:center;color:#09111e;font-weight:800}
+h1{font-size:clamp(25px,3vw,35px);line-height:1.15;margin:0 0 8px;letter-spacing:-.8px}h2{font-size:18px;margin:0 0 5px}h3{font-size:14px;margin:0 0 8px}.sub{color:var(--muted);margin:0}.hero{border:1px solid #293b59;border-radius:20px;padding:25px;background:linear-gradient(110deg,#172944,#151b32 62%,#242044);display:flex;justify-content:space-between;gap:20px;align-items:center;margin-bottom:20px;overflow:hidden;position:relative}.hero:after{content:"✦";font-size:180px;line-height:1;position:absolute;right:8%;top:-35px;color:#ffffff09}.hero>*{position:relative;z-index:1}.hero p{max-width:650px;color:#bac8dc;margin:8px 0 17px}.btn{border:1px solid var(--line);background:#1a2639;color:var(--text);padding:10px 14px;border-radius:10px;font-weight:650}.btn:hover{filter:brightness(1.15)}.btn.primary{background:linear-gradient(135deg,#6ea8ff,#7c83ed);color:#071222;border:0}.btn.ghost{background:transparent}.btn.small{padding:7px 10px;font-size:12px}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px}.stat,.card{background:linear-gradient(180deg,#121b2a,#101725);border:1px solid var(--line);border-radius:15px;padding:16px}.stat .label{color:var(--muted);font-size:12px}.stat strong{font-size:24px;display:block;margin:4px 0}.stat span:last-child{color:#8192aa;font-size:11px}.layout{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(270px,.8fr);gap:16px}.stack{display:grid;gap:16px}.cardhead{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;gap:12px}.tag{font-size:10px;color:#a9c9ff;background:#1a3151;border:1px solid #2c4b76;padding:4px 8px;border-radius:30px}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:13px}.field{display:grid;gap:6px}.field.full{grid-column:1/-1}.field label{font-size:12px;color:#bdc9da;font-weight:650}.field input,.field select,.field textarea{width:100%;background:#0b1320;border:1px solid #2b3a51;color:var(--text);padding:10px 11px;border-radius:9px;outline:none}.field input:focus,.field select:focus,.field textarea:focus{border-color:#679df0;box-shadow:0 0 0 3px #679df022}.field textarea{min-height:92px;resize:vertical}.hint{font-size:11px;color:#7f90a8}.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:14px}.output{white-space:pre-wrap;background:#0a111d;border:1px solid #26364e;padding:13px;border-radius:10px;color:#c8d6e9;min-height:85px;font-size:12px;overflow-wrap:anywhere}.empty{color:#74859d}.modelrow{display:flex;justify-content:space-between;align-items:center;padding:11px 0;border-bottom:1px solid #202d40}.modelrow:last-child{border:0}.modelrow small{display:block;color:var(--muted)}.status{font-size:10px;color:var(--good);background:#123326;padding:4px 7px;border-radius:20px}.status.off{color:#eab96c;background:#382a17}.page{display:none}.page.active{display:block}.notice{padding:11px 13px;border:1px solid #70542a;background:#2a2115;color:#f2d5a5;border-radius:10px;font-size:12px;margin-bottom:15px}.success{color:var(--good)}.danger{color:#ff9b9b}.contentlist{display:grid;gap:9px}.contentitem{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px;border:1px solid var(--line);border-radius:11px;background:#0e1725}.contentitem small{display:block;color:var(--muted)}.miniicon{width:37px;height:37px;border-radius:10px;background:#1d3150;display:grid;place-items:center;font-size:18px}.itemleft{display:flex;gap:10px;align-items:center;min-width:0}.itemleft div:last-child{min-width:0}.itemleft strong{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.muted{color:var(--muted)}.footer{margin-top:24px;color:#63738b;font-size:11px;text-align:center}
+@media(max-width:900px){.app{grid-template-columns:75px 1fr}.sidebar{padding:18px 9px}.brand{justify-content:center;padding:0}.brandtext,.navlabel,.navtext,.sidebottom{display:none}.nav button{justify-content:center;padding:12px 8px}.layout{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.app{display:block}.sidebar{position:sticky;top:0;z-index:10;border-right:0;border-bottom:1px solid var(--line);padding:9px;display:flex;flex-direction:row;align-items:center;justify-content:space-between}.brand{padding:0}.brandtext{display:block}.nav{display:flex;gap:2px}.navlabel,.navtext,.sidebottom{display:none}.nav button{padding:9px}.nav button .ico{font-size:17px}.main{padding:20px 14px}.hero{padding:19px;display:block}.hero .btn{margin-top:5px}.stats{gap:8px}.stat{padding:12px}.stat strong{font-size:20px}.formgrid{grid-template-columns:1fr}.field.full{grid-column:auto}.top{margin-bottom:18px}}
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="sidebar">
+  <div class="brand"><div class="logo">C</div><div class="brandtext"><strong>CREATOR OS</strong><small>AI Content Factory</small></div></div>
+  <div><div class="navlabel">WORKSPACE</div><nav class="nav">
+    <button class="active" data-page="overview"><span class="ico">▦</span><span class="navtext">Overview</span></button>
+    <button data-page="planner"><span class="ico">✦</span><span class="navtext">Content Planner</span></button>
+    <button data-page="image"><span class="ico">▧</span><span class="navtext">Image Studio</span></button>
+    <button data-page="video"><span class="ico">▶</span><span class="navtext">Video Studio</span></button>
+    <button data-page="library"><span class="ico">▤</span><span class="navtext">Content Library</span></button>
+  </nav></div>
+  <div><div class="navlabel">SETTINGS</div><nav class="nav">
+    <button data-page="ai"><span class="ico">⌘</span><span class="navtext">AI Connections</span></button>
+    <button data-page="publish"><span class="ico">◷</span><span class="navtext">Publishing</span></button>
+  </nav></div>
+  <div class="sidebottom"><strong>Personal Beta</strong><br><small>Local prototype · v0.1</small></div>
+</aside>
+<main class="main">
+  <div class="top"><div class="crumb">Workspace / <span id="crumb">Overview</span></div><div class="topright"><span class="pill">PERSONAL BETA</span><div class="avatar">U</div></div></div>
+
+  <section class="page active" id="page-overview">
+    <div class="hero"><div><span class="tag">YOUR AI CONTENT FACTORY</span><h1>Ide jadi konten.<br>Konten jadi konsisten.</h1><p>Rencanakan, siapkan prompt, dan kelola produksi gambar maupun video dari satu tempat. Mulai dari niche yang kamu pilih.</p><button class="btn primary" onclick="showPage('planner')">＋ Buat konten pertama</button></div></div>
+    <div class="stats">
+      <div class="stat"><span class="label">Draft tersimpan</span><strong id="statDraft">0</strong><span>Di browser ini</span></div>
+      <div class="stat"><span class="label">Image jobs</span><strong>—</strong><span>Belum terhubung</span></div>
+      <div class="stat"><span class="label">Video jobs</span><strong>—</strong><span>Belum terhubung</span></div>
+      <div class="stat"><span class="label">AI connection</span><strong id="statAI">0</strong><span>Provider dikonfigurasi</span></div>
+    </div>
+    <div class="layout">
+      <div class="card"><div class="cardhead"><div><h2>Mulai produksi</h2><span class="muted">Pilih jenis konten yang ingin disiapkan.</span></div></div>
+        <div class="contentlist">
+          <div class="contentitem"><div class="itemleft"><div class="miniicon">✦</div><div><strong>Content Planner</strong><small>Ide, hook, caption, dan prompt</small></div></div><button class="btn small" onclick="showPage('planner')">Buka</button></div>
+          <div class="contentitem"><div class="itemleft"><div class="miniicon">▧</div><div><strong>Image Studio</strong><small>Poster, carousel, dan visual</small></div></div><button class="btn small" onclick="showPage('image')">Buka</button></div>
+          <div class="contentitem"><div class="itemleft"><div class="miniicon">▶</div><div><strong>Video Studio</strong><small>Konsep, scene, dan video prompt</small></div></div><button class="btn small" onclick="showPage('video')">Buka</button></div>
+        </div>
+      </div>
+      <div class="card"><div class="cardhead"><h2>AI Connections</h2><span class="tag">SETUP</span></div><div class="modelrow"><div><strong>SnifoxAI</strong><small>Text / Content Brain</small></div><span class="status off" id="snifoxBadge">Belum dites</span></div><div class="modelrow"><div><strong>Image provider</strong><small>Tambahkan setelahnya</small></div><span class="status off">Belum ada</span></div><div class="modelrow"><div><strong>Video provider</strong><small>Seedance / Veo / lainnya</small></div><span class="status off">Belum ada</span></div><button class="btn small" style="margin-top:13px" onclick="showPage('ai')">Atur koneksi AI →</button></div>
+    </div>
+  </section>
+
+  <section class="page" id="page-planner">
+    <h1>Content Planner</h1><p class="sub" style="margin-bottom:18px">Tentukan niche dan format. Creator OS akan menyusun brief konten yang siap dikembangkan.</p>
+    <div class="layout"><div class="card">
+      <div class="cardhead"><h2>Konfigurasi konten</h2><span class="tag">CONTENT BRIEF</span></div>
+      <div class="formgrid">
+        <div class="field"><label>Niche</label><select id="niche"><option>Travel & Tourism</option><option>Food & Culinary</option><option>Lifestyle</option><option>Business</option><option>Education</option><option>Technology</option><option>Fitness</option><option>Entertainment</option><option>Gaming</option><option>Custom niche</option></select></div>
+        <div class="field"><label>Tipe konten</label><select id="ctype"><option>Educational</option><option>Entertainment</option><option>Storytelling</option><option>Review</option><option>Promotional</option><option>Tips & Tricks</option><option>Inspirational</option></select></div>
+        <div class="field"><label>Format</label><select id="format"><option>Image Post</option><option>Carousel</option><option>Short Video</option><option>Long Video</option></select></div>
+        <div class="field"><label>Platform tujuan</label><select id="platform"><option>Instagram</option><option>TikTok</option><option>YouTube Shorts</option><option>Facebook</option><option>Multi-platform</option></select></div>
+        <div class="field"><label>Bahasa</label><select id="language"><option>Bahasa Indonesia</option><option>English</option><option>Japanese</option></select></div>
+        <div class="field"><label>Target audiens</label><input id="audience" placeholder="Contoh: Gen Z, traveler, keluarga"></div>
+        <div class="field full"><label>Topik / brief khusus</label><textarea id="topic" placeholder="Contoh: 5 hidden gems di Bali yang wajib dikunjungi..."></textarea></div>
+      </div>
+      <div class="actions"><button class="btn primary" onclick="generateBrief()">✦ Susun brief konten</button><button class="btn" onclick="saveDraft()">Simpan draft</button></div>
+    </div><div class="card"><div class="cardhead"><h2>Hasil brief</h2><span class="tag">PREVIEW</span></div><div id="briefOutput" class="output empty">Brief konten akan tampil di sini.</div><div class="actions"><button class="btn small" onclick="copyText('briefOutput')">Salin brief</button></div></div></div>
+  </section>
+
+  <section class="page" id="page-image">
+    <h1>Image Studio</h1><p class="sub" style="margin-bottom:18px">Siapkan arahan visual untuk generator gambar pilihanmu.</p>
+    <div class="layout"><div class="card"><div class="cardhead"><h2>Image configuration</h2><span class="tag">IMAGE</span></div>
+      <div class="formgrid">
+        <div class="field"><label>Jenis desain</label><select id="design"><option>Modern Minimalist</option><option>Luxury / Premium</option><option>Liquid Glass</option><option>Editorial Magazine</option><option>Corporate</option><option>Gen Z</option><option>Vintage</option><option>Futuristic</option><option>3D Animation</option></select></div>
+        <div class="field"><label>Rasio gambar</label><select id="ratio"><option>4:5 portrait</option><option>9:16 vertical</option><option>1:1 square</option><option>16:9 landscape</option></select></div>
+        <div class="field"><label>Jumlah slide</label><select id="slides"><option>1</option><option>3</option><option>5</option><option>7</option><option>10</option></select></div>
+        <div class="field"><label>Warna / mood</label><input id="mood" placeholder="Contoh: champagne gold, warm beige"></div>
+        <div class="field full"><label>Deskripsi visual</label><textarea id="imageDesc" placeholder="Jelaskan objek, komposisi, teks yang harus tampil, dan detail desain..."></textarea></div>
+      </div><div class="actions"><button class="btn primary" onclick="makeImagePrompt()">Buat image prompt</button><button class="btn" onclick="saveImagePrompt()">Simpan ke library</button></div>
+    </div><div class="card"><h2>Image prompt</h2><div id="imageOutput" class="output empty">Prompt gambar akan tampil di sini.</div><div class="actions"><button class="btn small" onclick="copyText('imageOutput')">Salin prompt</button></div><p class="hint">Generator gambar belum terhubung. Prompt ini dapat disalin ke provider image AI yang kamu gunakan.</p></div></div>
+  </section>
+
+  <section class="page" id="page-video">
+    <h1>Video Studio</h1><p class="sub" style="margin-bottom:18px">Susun brief video dan prompt produksi untuk model video pilihan.</p>
+    <div class="layout"><div class="card"><div class="cardhead"><h2>Video configuration</h2><span class="tag">VIDEO</span></div>
+      <div class="formgrid">
+        <div class="field"><label>Model target</label><select id="videoModel"><option>Seedance</option><option>Veo 3</option><option>OmniFlash</option><option>Kling</option><option>Runway</option><option>Sora</option><option>Hailuo</option><option>Other / Custom</option></select></div>
+        <div class="field"><label>Tipe video</label><select id="videoType"><option>Faceless Storytelling</option><option>Cinematic Documentary</option><option>UGC / Product Review</option><option>AI Animation</option><option>Educational Explainer</option><option>Travel Reel</option><option>Product Commercial</option></select></div>
+        <div class="field"><label>Durasi target</label><select id="duration"><option>15 seconds</option><option>30 seconds</option><option>60 seconds</option><option>90 seconds</option><option>2 minutes</option></select></div>
+        <div class="field"><label>Rasio</label><select id="videoRatio"><option>9:16 vertical</option><option>16:9 landscape</option><option>1:1 square</option></select></div>
+        <div class="field"><label>Visual style</label><select id="visualStyle"><option>Photorealistic cinematic</option><option>Premium 3D animation</option><option>Documentary realism</option><option>Anime</option><option>Commercial advertising</option></select></div>
+        <div class="field"><label>Narasi</label><select id="voice"><option>AI voice-over</option><option>Character dialogue</option><option>No voice / ASMR</option><option>On-camera presenter</option></select></div>
+        <div class="field full"><label>Konsep / cerita video</label><textarea id="videoDesc" placeholder="Tuliskan ide video, pesan utama, karakter, produk, lokasi, atau alur cerita..."></textarea></div>
+      </div><div class="actions"><button class="btn primary" onclick="makeVideoPrompt()">Buat video prompt</button><button class="btn" onclick="saveVideoPrompt()">Simpan ke library</button></div>
+    </div><div class="card"><h2>Video production prompt</h2><div id="videoOutput" class="output empty">Video prompt akan tampil di sini.</div><div class="actions"><button class="btn small" onclick="copyText('videoOutput')">Salin prompt</button></div><p class="hint">Model selector saat ini untuk menyusun brief. Koneksi generate video perlu adapter API resmi per provider.</p></div></div>
+  </section>
+
+  <section class="page" id="page-library">
+    <h1>Content Library</h1><p class="sub" style="margin-bottom:18px">Draft yang disimpan di browser ini.</p><div class="card"><div class="cardhead"><h2>Saved content</h2><button class="btn small" onclick="renderLibrary()">Refresh</button></div><div id="libraryList" class="contentlist"></div></div>
+  </section>
+
+  <section class="page" id="page-ai">
+    <h1>AI Connections</h1><p class="sub" style="margin-bottom:18px">Konfigurasikan koneksi AI untuk kebutuhan content planning.</p>
+    <div class="notice">Mode index.html berjalan langsung di browser. API Key yang dimasukkan hanya disimpan sementara di memori halaman, tetapi permintaan langsung dari browser tetap dapat mengekspos key melalui developer tools/network. Gunakan hanya untuk tes pribadi; untuk penggunaan aman, pindahkan request ke backend server.</div>
+    <div class="layout"><div class="card"><div class="cardhead"><h2>SnifoxAI connection</h2><span class="tag">OPENAI-COMPATIBLE CHAT</span></div>
+      <div class="formgrid">
+        <div class="field full"><label>Base URL</label><input id="baseUrl" value="https://core.snifoxai.com/v1"></div>
+        <div class="field full"><label>SnifoxAI API Key</label><input id="apiKey" type="password" autocomplete="off" placeholder="Masukkan API Key (tidak disimpan)"></div>
+        <div class="field full"><label>Model ID</label><input id="modelId" placeholder="Masukkan model ID sesuai dashboard SnifoxAI"></div>
+        <div class="field full"><label>System instruction</label><textarea id="systemPrompt">You are an expert social media content strategist. Create useful, engaging, accurate content plans. Respond in the language requested by the user.</textarea></div>
+      </div><div class="actions"><button class="btn primary" onclick="testSnifox()">Test connection</button><button class="btn" onclick="clearAI()">Clear fields</button></div><div id="aiStatus" class="output" style="margin-top:13px">Status koneksi belum dites.</div>
+    </div><div class="card"><h2>Provider roadmap</h2><div class="modelrow"><div><strong>SnifoxAI</strong><small>Text generation / content brain</small></div><span class="status off" id="snifoxStatus">Not tested</span></div><div class="modelrow"><div><strong>Image generation</strong><small>Provider API adapter</small></div><span class="status off">Coming next</span></div><div class="modelrow"><div><strong>Video generation</strong><small>Seedance / Veo / gateway</small></div><span class="status off">Coming next</span></div><div class="modelrow"><div><strong>Voice & audio</strong><small>TTS / subtitle pipeline</small></div><span class="status off">Coming next</span></div><p class="hint" style="margin-top:13px">Model ID, endpoint, dan dukungan fitur harus mengikuti dokumentasi akun/provider. Jangan menebak model ID.</p></div></div>
+  </section>
+
+  <section class="page" id="page-publish">
+    <h1>Publishing</h1><p class="sub" style="margin-bottom:18px">Area persiapan publikasi media sosial.</p>
+    <div class="card"><div class="notice">Auto-posting belum diaktifkan. Setiap platform membutuhkan OAuth, izin aplikasi, dan endpoint publishing resmi. Jangan masukkan password media sosial di halaman ini.</div><h2>Publishing checklist</h2><div class="contentlist" style="margin-top:13px">
+      <div class="contentitem"><div class="itemleft"><div class="miniicon">◎</div><div><strong>Instagram Professional</strong><small>Perlu Meta app + OAuth permissions</small></div></div><span class="status off">Not connected</span></div>
+      <div class="contentitem"><div class="itemleft"><div class="miniicon">♪</div><div><strong>TikTok</strong><small>Perlu TikTok developer app + publishing approval</small></div></div><span class="status off">Not connected</span></div>
+      <div class="contentitem"><div class="itemleft"><div class="miniicon">▶</div><div><strong>YouTube</strong><small>Perlu Google OAuth + YouTube Data API</small></div></div><span class="status off">Not connected</span></div>
+      <div class="contentitem"><div class="itemleft"><div class="miniicon">f</div><div><strong>Facebook Pages</strong><small>Perlu Meta app + Page permissions</small></div></div><span class="status off">Not connected</span></div>
+    </div></div>
+  </section>
+  <div class="footer">CREATOR OS · Personal Beta · Local browser prototype</div>
+</main>
+</div>
+<script>
+const pages=["overview","planner","image","video","library","ai","publish"];
+function showPage(name){pages.forEach(p=>{document.getElementById("page-"+p).classList.toggle("active",p===name)});document.querySelectorAll(".nav button").forEach(b=>b.classList.toggle("active",b.dataset.page===name));document.getElementById("crumb").textContent=({overview:"Overview",planner:"Content Planner",image:"Image Studio",video:"Video Studio",library:"Content Library",ai:"AI Connections",publish:"Publishing"})[name];if(name==="library")renderLibrary();window.scrollTo({top:0,behavior:"smooth"})}
+document.querySelectorAll(".nav button").forEach(b=>b.addEventListener("click",()=>showPage(b.dataset.page)));
+function val(id){return document.getElementById(id).value.trim()}
+function setOutput(id,text){const el=document.getElementById(id);el.textContent=text;el.classList.remove("empty")}
+function generateBrief(){const brief=`CONTENT BRIEF\n\nNiche: ${val("niche")}\nTipe: ${val("ctype")}\nFormat: ${val("format")}\nPlatform: ${val("platform")}\nBahasa: ${val("language")}\nAudiens: ${val("audience")||"Belum ditentukan"}\nTopik: ${val("topic")||"Kembangkan ide terbaik yang relevan dengan niche."}\n\nARAHAN AI:\nBuat 3 ide konten yang berbeda. Untuk setiap ide, tuliskan judul, hook 3 detik pertama, pesan utama, outline atau urutan slide/scene, CTA, caption, dan hashtag relevan. Pastikan informasi faktual dan hindari klaim yang tidak terverifikasi.`;setOutput("briefOutput",brief)}
+function makeImagePrompt(){const p=`Create a polished social media visual.\n\nDESIGN STYLE: ${val("design")}\nASPECT RATIO: ${val("ratio")}\nSLIDES: ${val("slides")}\nCOLOR / MOOD: ${val("mood")||"Choose a cohesive palette appropriate to the subject"}\nCREATIVE BRIEF: ${val("imageDesc")||"Develop a compelling visual concept based on the selected niche."}\n\nQUALITY REQUIREMENTS:\nStrong visual hierarchy, professional typography, clean composition, balanced negative space, accurate spelling for all requested text, consistent art direction across slides, platform-ready layout. Do not invent logos or factual claims.`;setOutput("imageOutput",p)}
+function makeVideoPrompt(){const p=`VIDEO GENERATION BRIEF\n\nTARGET MODEL: ${val("videoModel")}\nVIDEO TYPE: ${val("videoType")}\nDURATION: ${val("duration")}\nASPECT RATIO: ${val("videoRatio")}\nVISUAL STYLE: ${val("visualStyle")}\nAUDIO: ${val("voice")}\nCONCEPT: ${val("videoDesc")||"Develop a clear engaging concept suitable for the selected niche."}\n\nINSTRUCTIONS:\nCreate a coherent scene-by-scene plan with timestamps, visual action, camera movement, lighting, environment, voice-over/dialogue if selected, and transition notes. Maintain character, product, wardrobe, and location continuity. Avoid unnatural motion, duplicated objects, distorted anatomy, and unintended text. Adapt technical parameters to the selected model's actual API capabilities.`;setOutput("videoOutput",p)}
+function copyText(id){const t=document.getElementById(id).textContent;if(!t||t.includes("akan tampil"))return;navigator.clipboard?.writeText(t).then(()=>alert("Teks berhasil disalin.")).catch(()=>alert("Clipboard tidak tersedia. Silakan salin manual."))}
+function getDrafts(){try{return JSON.parse(localStorage.getItem("creatoros_drafts")||"[]")}catch(e){return []}}
+function saveDraftItem(type,text){if(!text||text.includes("akan tampil")){alert("Buat konten terlebih dahulu.");return}const a=getDrafts();a.unshift({id:Date.now(),type,text,created:new Date().toLocaleString("id-ID")});localStorage.setItem("creatoros_drafts",JSON.stringify(a));updateStats();alert("Draft disimpan di browser ini.")}
+function saveDraft(){saveDraftItem("Content brief",document.getElementById("briefOutput").textContent)}
+function saveImagePrompt(){saveDraftItem("Image prompt",document.getElementById("imageOutput").textContent)}
+function saveVideoPrompt(){saveDraftItem("Video prompt",document.getElementById("videoOutput").textContent)}
+function renderLibrary(){const a=getDrafts(),el=document.getElementById("libraryList");el.innerHTML="";if(!a.length){el.innerHTML='<div class="empty">Belum ada draft tersimpan.</div>';return}a.forEach(x=>{const d=document.createElement("div");d.className="contentitem";const left=document.createElement("div");left.className="itemleft";const icon=document.createElement("div");icon.className="miniicon";icon.textContent=x.type.includes("Video")?"▶":x.type.includes("Image")?"▧":"✦";const info=document.createElement("div");const strong=document.createElement("strong");strong.textContent=x.type;const small=document.createElement("small");small.textContent=x.created;info.append(strong,small);left.append(icon,info);const btn=document.createElement("button");btn.className="btn small";btn.textContent="Salin";btn.onclick=()=>navigator.clipboard?.writeText(x.text).then(()=>alert("Draft disalin."));d.append(left,btn);el.append(d)})}
+function updateStats(){document.getElementById("statDraft").textContent=getDrafts().length}
+let snifoxKeyMemory="";
+async function testSnifox(){const key=val("apiKey"),base=val("baseUrl").replace(/\/+$/,""),model=val("modelId"),status=document.getElementById("aiStatus");if(!key||!model){status.textContent="Isi API Key dan Model ID terlebih dahulu.";return}status.textContent="Menguji koneksi...";snifoxKeyMemory=key;try{const r=await fetch(base+"/chat/completions",{method:"POST",headers:{"Content-Type":"application/json","Authorization":"Bearer "+key},body:JSON.stringify({model,messages:[{role:"user",content:"Reply with exactly: Creator OS connection successful."}],max_tokens:40})});const body=await r.text();if(!r.ok)throw new Error("HTTP "+r.status+" — "+body.slice(0,500));let data;try{data=JSON.parse(body)}catch(e){data={raw:body}}const answer=data.choices?.[0]?.message?.content||JSON.stringify(data).slice(0,800);status.textContent="Connection response:\n"+answer;document.getElementById("snifoxBadge").textContent="Response received";document.getElementById("snifoxBadge").className="status";document.getElementById("snifoxStatus").textContent="Responding";document.getElementById("snifoxStatus").className="status";document.getElementById("statAI").textContent="1"}catch(e){status.textContent="Koneksi gagal: "+e.message+"\n\nJika muncul CORS error, browser tidak mengizinkan request langsung. Kita perlu backend proxy. Periksa juga Base URL, API Key, Model ID, dan akses endpoint di akun SnifoxAI.";document.getElementById("snifoxBadge").textContent="Connection issue";document.getElementById("snifoxBadge").className="status off"}}
+function clearAI(){document.getElementById("apiKey").value="";document.getElementById("modelId").value="";snifoxKeyMemory="";document.getElementById("aiStatus").textContent="API Key dan Model ID dihapus dari form."}
+updateStats();
+</script>
+</body>
+</html>
